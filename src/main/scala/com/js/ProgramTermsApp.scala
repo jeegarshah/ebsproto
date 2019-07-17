@@ -1,5 +1,7 @@
 package com.js
 
+import java.io.{BufferedOutputStream, ByteArrayOutputStream, OutputStream}
+
 import com.js.RateType.RateType
 import io.circe._
 import io.circe.generic.semiauto._
@@ -144,11 +146,13 @@ class QueryResource2(
 
     implicit val fooDecoder: Decoder[GQL1] = deriveDecoder
 
+
     override def post(req: Request): Response = {
         println(s"GQL post - request number : $count")
         count += 1
-
-        val gql = decode[GQL1](req.body().get).right.get
+        val os = new ByteArrayOutputStream()
+        req.representation().write(os)
+        val gql = decode[GQL1](new String(os.toByteArray)).right.get
         println(s"GQL = $gql")
 
         val value = Executor.execute(graphqlSchema, QueryParser.parse(gql.query).get, service)
