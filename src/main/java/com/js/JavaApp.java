@@ -10,11 +10,11 @@ import org.httpobjects.jetty.HttpObjectsJettyHandler;
  * Hello world!
  *
  */
-public class App
+public class JavaApp
 {
     public static void main( String[] args )
     {
-        HttpObjectsJettyHandler.launchServer(8080, new X("/hello"));
+        HttpObjectsJettyHandler.launchServer(5000, new X("/hello"));
     }
 
     static class X extends HttpObject{
