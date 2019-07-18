@@ -1,6 +1,6 @@
 FROM maven:3.6.1-jdk-8
 
-EXPOSE 5000
+EXPOSE 80
 RUN mkdir app
 WORKDIR /app
 
