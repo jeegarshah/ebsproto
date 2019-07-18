@@ -113,6 +113,7 @@ object  ProgramTermsApp extends App {
 //source.getLines().mkString("\n")
     HttpObjectsJettyHandler.launchServer(
         5000,
+        new RootResource,
         new HelloResource1,
         new QueryResource2("", schema, new Services)
     )
@@ -125,7 +126,18 @@ class HelloResource1 extends HttpObject("/hello/{x}") {
         println(s"HelloResource1 get ${valueForX} - request number : $count")
         count += 1
 
-        DSL.OK(DSL.Html(s"<html><body><h1>hello from scala - V3 - ${valueForX}</h1></body></html>"))
+        DSL.OK(DSL.Html(s"<html><body><h1>hello from scala - V4 - ${valueForX}</h1></body></html>"))
+    }
+}
+
+class RootResource extends HttpObject("/") {
+    var count = 0
+    override def get(req: Request): Response = {
+        val valueForX= req.path.valueFor("x")
+        println(s"HelloResource1 get ${valueForX} - request number : $count")
+        count += 1
+
+        DSL.OK(DSL.Html(s"<html><body><h1>root hello from scala - V4 - ${valueForX}</h1></body></html>"))
     }
 }
 
