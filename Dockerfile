@@ -7,6 +7,4 @@ WORKDIR /app
 COPY . /app
 RUN mvn clean package
 
-#COPY ./target/ebsproto-1.0-SNAPSHOT-jar-with-dependencies.jar /app/ebsproto.jar
-
-CMD ["sh", "-c", "java -jar ./target/ebsproto-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+CMD ["sh", "-c", "java -jar /app/target/ebsproto-1.0-SNAPSHOT-jar-with-dependencies.jar"]
