@@ -18,7 +18,6 @@ import sangria.schema._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-import scala.io.Source
 
 
 object RateType extends Enumeration {
@@ -106,15 +105,16 @@ object  ProgramTermsApp extends App {
 
     val schema: Schema[ProgramTermsService with SituationService, Unit] = Schema(QueryType)
 
-    val source = Source.fromResource("graphiql.html")
+//    private val source: BufferedSource = Source.fromResource("graphiql.html")
 
 //    println("Printing graphiql.html")
 //    source.bufferedReader().lines().forEach(println)
 //    println(source)
+//source.getLines().mkString("\n")
     HttpObjectsJettyHandler.launchServer(
         5000,
         new HelloResource1,
-        new QueryResource2(source.getLines().mkString("\n"), schema, new Services)
+        new QueryResource2("", schema, new Services)
     )
 }
 
@@ -140,8 +140,8 @@ class QueryResource2(
     service: Services) extends HttpObject("/query") {
     var count = 0
     override def get(req: Request): Response = {
-        println(s"get called - serving ${graphiqlHtml.substring(0,100)}...")
-        OK(Html(graphiqlHtml))
+        println(s"get called - serving ${qraphiqlHtmlString.substring(0,100)}...")
+        OK(Html(qraphiqlHtmlString))
     }
 
     implicit val fooDecoder: Decoder[GQL1] = deriveDecoder
