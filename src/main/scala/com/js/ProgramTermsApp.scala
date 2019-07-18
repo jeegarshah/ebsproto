@@ -126,7 +126,7 @@ class HelloResource1 extends HttpObject("/hello/{x}") {
         println(s"HelloResource1 get ${valueForX} - request number : $count")
         count += 1
 
-        DSL.OK(DSL.Html(s"<html><body><h1>hello from scala - V4 - ${valueForX}</h1></body></html>"))
+        DSL.OK(DSL.Html(s"<html><body><h1>hello from scala - V5 - ${valueForX}</h1></body></html>"))
     }
 }
 
@@ -137,7 +137,7 @@ class RootResource extends HttpObject("/") {
         println(s"HelloResource1 get ${valueForX} - request number : $count")
         count += 1
 
-        DSL.OK(DSL.Html(s"<html><body><h1>root hello from scala - V4 - ${valueForX}</h1></body></html>"))
+        DSL.OK(DSL.Html(s"<html><body><h1>root hello from scala - V5 - ${valueForX}</h1></body></html>"))
     }
 }
 
