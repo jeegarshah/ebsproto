@@ -125,7 +125,7 @@ class HelloResource1 extends HttpObject("/hello/{x}") {
         println(s"HelloResource1 get ${valueForX} - request number : $count")
         count += 1
 
-        DSL.OK(DSL.Html("<html><body><h1>hello from scala - V2</h1></body></html>"))
+        DSL.OK(DSL.Html(s"<html><body><h1>hello from scala - V3 - ${valueForX}</h1></body></html>"))
     }
 }
 
