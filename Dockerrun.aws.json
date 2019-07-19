@@ -1,0 +1,11 @@
+{
+    "AWSEBDockerrunVersion": 2,
+
+    "containerDefinitions": [
+        {
+            "name": "php-app",
+            "image": "814654560236.dkr.ecr.us-east-1.amazonaws.com/ebsproto:latest",
+            "essential": true
+        }
+    ]
+}
