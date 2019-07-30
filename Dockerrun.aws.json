@@ -3,9 +3,16 @@
 
     "containerDefinitions": [
         {
-            "name": "php-app",
+            "name": "ebsproto-app",
             "image": "814654560236.dkr.ecr.us-east-1.amazonaws.com/ebsproto:latest",
-            "essential": true
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 8080,
+                    "containerPort": 8080
+                }
+            ]
         }
     ]
 }
