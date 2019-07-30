@@ -112,7 +112,7 @@ object  ProgramTermsApp extends App {
 //    println(source)
 //source.getLines().mkString("\n")
     HttpObjectsJettyHandler.launchServer(
-        80,
+        8080,
         new RootResource,
         new HelloResource1,
         new QueryResource2("", schema, new Services)
